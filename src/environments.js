@@ -265,3 +265,21 @@ defineEnvironment("gathered", {
     res = parseArray(context.parser, res, "display");
     return res;
 });
+
+
+// A lgathered environment is like an array environment with one left aligned
+// column, but where rows are considered lines so get \jot line spacing
+// and contents are set in \displaystyle.
+defineEnvironment("lgathered", {
+}, function(context) {
+    let res = {
+        type: "array",
+        cols: [{
+            type: "align",
+            align: "l",
+        }],
+        addJot: true,
+    };
+    res = parseArray(context.parser, res, "display");
+    return res;
+});

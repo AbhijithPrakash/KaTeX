@@ -2,6 +2,21 @@
 
 [![Join the chat at https://gitter.im/Khan/KaTeX](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Khan/KaTeX?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+## Brainly KaTeX
+
+Version of KaTeX modified to handle not so well formatted LaTeX used on Brainly portal.
+
+ * **National characters** are handled also in math mode
+ * **lgathered** alignment environment was added to handle new lines in math mode
+ * **android_dist** was added to makefile, that creates a minified distribution package ready to put into android application assets folder.
+
+## Usage
+
+- Call `make android_dist` to create a distribution package for Brainly Android application.
+- Call `make test` to run tests.
+
+## KaTeX
+
 KaTeX is a fast, easy-to-use JavaScript library for TeX math rendering on the web.
 
  * **Fast:** KaTeX renders its math synchronously and doesn't need to reflow the page. See how it compares to a competitor in [this speed test](http://www.intmath.com/cg5/katex-mathjax-comparison.php).
@@ -10,15 +25,6 @@ KaTeX is a fast, easy-to-use JavaScript library for TeX math rendering on the we
  * **Server side rendering:** KaTeX produces the same output regardless of browser or environment, so you can pre-render expressions using Node.js and send them as plain HTML.
 
 KaTeX supports all major browsers, including Chrome, Safari, Firefox, Opera, Edge, and IE 9 - IE 11. A list of supported commands can be found on the [wiki](https://github.com/Khan/KaTeX/wiki/Function-Support-in-KaTeX).
-
-## Usage
-
-You can [download KaTeX](https://github.com/khan/katex/releases) and host it on your server or include the `katex.min.js` and `katex.min.css` files on your page directly from a CDN:
-
-```html
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
-```
 
 #### In-browser rendering
 
@@ -65,10 +71,6 @@ katex.render("c = \\pm\\sqrt{a^2 + b^2}\\in\\RR", element, {
 #### Automatic rendering of math on a page
 
 Math on the page can be automatically rendered using the auto-render extension. See [the Auto-render README](contrib/auto-render/README.md) for more information.
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## License
 

@@ -70,16 +70,20 @@ describe("unicode", function() {
         expect('\\text{ÀàÇçÉéÏïÖöÛû}').toParse();
     });
 
-    it("should not parse Latin-1 outside \\text{}", function() {
-        expect('ÀàÇçÉéÏïÖöÛû').toNotParse();
+    it("should parse Latin-1 outside \\text{}", function() {
+        expect('ÀàÇçÉéÏïÖöÛû').toParse();
     });
 
     it("should parse Cyrillic inside \\text{}", function() {
         expect('\\text{БГДЖЗЙЛФЦШЫЮЯ}').toParse();
     });
 
-    it("should not parse Cyrillic outside \\text{}", function() {
-        expect('БГДЖЗЙЛФЦШЫЮЯ').toNotParse();
+    it("should parse Cyrillic outside \\text{}", function() {
+        expect('БГДЖЗЙЛФЦШЫЮЯ').toParse();
+    });
+
+    it("should parse Polish outside \\text{}", function() {
+        expect('ąęśćłóżźĄĘŚŻŹĆÓŁ').toParse();
     });
 
     it("should parse CJK inside \\text{}", function() {
