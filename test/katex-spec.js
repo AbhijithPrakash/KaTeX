@@ -2192,6 +2192,15 @@ describe("An aligned environment", function() {
 
 });
 
+describe("An lgathered environment", function() {
+
+    it("should parse its input", function() {
+        expect("\\begin{lgathered}a&=b&c&=d\\\\e&=f\\end{lgathered}")
+            .toParse();
+    });
+
+});
+
 const getMathML = function(expr, settings) {
     const usedSettings = settings ? settings : defaultSettings;
 

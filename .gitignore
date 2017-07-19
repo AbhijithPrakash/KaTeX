@@ -5,6 +5,7 @@ last.png
 diff.png
 /.npm-install.stamp
 /dist/
+/assets/
 /test/screenshotter/tex/
 /test/screenshotter/diff/
 /test/symgroups.tex

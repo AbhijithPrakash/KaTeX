@@ -1,8 +1,8 @@
 @font-folder: "fonts";
-@use-eot: true;
+@use-eot: false;
 @use-ttf: true;
-@use-woff: true;
-@use-woff2: true;
+@use-woff: false;
+@use-woff2: false;
 
 .use-eot(@family, @family-suffix) when (@use-eot = true) {
     src: url('@{font-folder}/KaTeX_@{family}-@{family-suffix}.eot');

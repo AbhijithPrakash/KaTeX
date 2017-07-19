@@ -1,4 +1,4 @@
-.PHONY: build dist lint setup copy serve clean metrics test coverage zip contrib
+.PHONY: build dist android_dist lint setup copy serve clean metrics test coverage zip contrib
 build: lint build/katex.min.js build/katex.min.css contrib zip compress
 
 ifeq ($(KATEX_DIST),skip)
@@ -12,6 +12,17 @@ dist: build
 	cp -R build/katex/ dist/
 
 endif
+
+android_dist: build
+	rm -rf assets/
+	mkdir assets/
+	mkdir assets/katex/
+	mkdir assets/katex/contrib/
+	mkdir assets/katex/fonts/
+	cp -R build/katex/contrib/ assets/katex/contrib/
+	cp build/katex/katex.min.css assets/katex/
+	cp build/katex/katex.min.js assets/katex/
+	cp build/katex/fonts/*.ttf assets/katex/fonts/
 
 NODE := node # pass NODE=nodejs on Debian without package nodejs-legacy
 NODECHK := $(shell $(NODE) ./check-node-version.js)

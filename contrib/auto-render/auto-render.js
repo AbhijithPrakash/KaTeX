@@ -37,12 +37,15 @@ const renderMathInText = function(text, optionsCopy) {
                 if (!(e instanceof katex.ParseError)) {
                     throw e;
                 }
+                const img = document.createElement("img");
+                const imgSrc = 'https://tex.z-dn.net/?f=' + encodeURI(data[i].rawData);
                 console.error(
                     "KaTeX auto-render: Failed to parse `" + data[i].data +
-                    "` with ",
+                    "` substituting with " + imgSrc,
                     e
                 );
-                fragment.appendChild(document.createTextNode(data[i].rawData));
+                img.setAttribute('src', imgSrc);
+                fragment.appendChild(img);
                 continue;
             }
             fragment.appendChild(span);

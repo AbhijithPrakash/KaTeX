@@ -404,11 +404,13 @@ defineSymbol(math, main, textord, "\u2018", "`");
 defineSymbol(math, main, textord, "$", "\\$");
 defineSymbol(text, main, textord, "$", "\\$");
 defineSymbol(text, main, textord, "$", "\\textdollar");
+defineSymbol(math, main, textord, "$", "\\textdollar");
 defineSymbol(math, main, textord, "%", "\\%");
 defineSymbol(text, main, textord, "%", "\\%");
 defineSymbol(math, main, textord, "_", "\\_");
 defineSymbol(text, main, textord, "_", "\\_");
 defineSymbol(text, main, textord, "_", "\\textunderscore");
+defineSymbol(math, main, textord, "_", "\\textunderscore");
 defineSymbol(math, main, textord, "\u2220", "\\angle");
 defineSymbol(math, main, textord, "\u221e", "\\infty");
 defineSymbol(math, main, textord, "\u2032", "\\prime");
@@ -557,7 +559,9 @@ defineSymbol(math, main, close, "}", "\\rbrace");
 defineSymbol(math, main, open, "[", "\\lbrack");
 defineSymbol(math, main, close, "]", "\\rbrack");
 defineSymbol(text, main, textord, "<", "\\textless"); // in T1 fontenc
+defineSymbol(math, main, textord, "<", "\\textless"); // in T1 fontenc
 defineSymbol(text, main, textord, ">", "\\textgreater"); // in T1 fontenc
+defineSymbol(math, main, textord, ">", "\\textgreater"); // in T1 fontenc
 defineSymbol(math, main, open, "\u230a", "\\lfloor");
 defineSymbol(math, main, close, "\u230b", "\\rfloor");
 defineSymbol(math, main, open, "\u2308", "\\lceil");
@@ -566,6 +570,7 @@ defineSymbol(math, main, textord, "\\", "\\backslash");
 defineSymbol(math, main, textord, "\u2223", "|");
 defineSymbol(math, main, textord, "\u2223", "\\vert");
 defineSymbol(text, main, textord, "|", "\\textbar"); // in T1 fontenc
+defineSymbol(math, main, textord, "|", "\\textbar"); // in T1 fontenc
 defineSymbol(math, main, textord, "\u2225", "\\|");
 defineSymbol(math, main, textord, "\u2225", "\\Vert");
 defineSymbol(text, main, textord, "\u2225", "\\textbardbl");
@@ -668,22 +673,33 @@ for (let i = 0; i < letters.length; i++) {
 for (let i = 0x00C0; i <= 0x00D6; i++) {
     const ch = String.fromCharCode(i);
     defineSymbol(text, main, textord, ch, ch);
+    defineSymbol(math, main, textord, ch, ch);
 }
 
 for (let i = 0x00D8; i <= 0x00F6; i++) {
     const ch = String.fromCharCode(i);
     defineSymbol(text, main, textord, ch, ch);
+    defineSymbol(math, main, textord, ch, ch);
 }
 
 for (let i = 0x00F8; i <= 0x00FF; i++) {
     const ch = String.fromCharCode(i);
     defineSymbol(text, main, textord, ch, ch);
+    defineSymbol(math, main, textord, ch, ch);
 }
 
 // Cyrillic
 for (let i = 0x0410; i <= 0x044F; i++) {
     const ch = String.fromCharCode(i);
     defineSymbol(text, main, textord, ch, ch);
+    defineSymbol(math, main, textord, ch, ch);
+}
+
+// Polish
+for (let i = 0x0104; i <= 0x017C; i++) {
+    const ch = String.fromCharCode(i);
+    defineSymbol(text, main, textord, ch, ch);
+    defineSymbol(math, main, textord, ch, ch);
 }
 
 // Unicode versions of existing characters
