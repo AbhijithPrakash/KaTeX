@@ -14,6 +14,7 @@ class ParseError {
         let error = "KaTeX parse error: " + message;
         let start;
         let end;
+        let part;
 
         if (token && token.lexer && token.start <= token.end) {
             // If we have the input and a position, make the error a bit fancier
@@ -46,7 +47,8 @@ class ParseError {
             } else {
                 right = input.slice(end);
             }
-            error += left + underlined + right;
+            part = left + underlined + right;
+            error += part;
         }
 
         // Some hackery to make ParseError a prototype of Error
@@ -56,6 +58,9 @@ class ParseError {
         self.__proto__ = ParseError.prototype;
 
         self.position = start;
+        self.end = end;
+        self.error = message;
+        self.part = part;
         return self;
     }
 }

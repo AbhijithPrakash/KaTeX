@@ -3,6 +3,13 @@
 
 const splitAtDelimiters = require("./splitAtDelimiters");
 
+const isAndroidDefined = function() {
+    if (typeof Android !== 'undefined') {
+        return typeof Android.errorCallback === "function";
+    }
+    return false;
+};
+
 const splitWithDelimiters = function(text, delimiters) {
     let data = [{type: "text", data: text}];
     for (let i = 0; i < delimiters.length; i++) {
@@ -37,15 +44,26 @@ const renderMathInText = function(text, optionsCopy) {
                 if (!(e instanceof katex.ParseError)) {
                     throw e;
                 }
-                const img = document.createElement("img");
-                const imgSrc = 'https://tex.z-dn.net/?f=' + encodeURI(data[i].rawData);
-                console.error(
-                    "KaTeX auto-render: Failed to parse `" + data[i].data +
-                    "` substituting with " + imgSrc,
-                    e
-                );
-                img.setAttribute('src', imgSrc);
-                fragment.appendChild(img);
+                if (optionsCopy.fallback) {
+                    const img = document.createElement("img");
+                    const imgSrc = 'https://tex.z-dn.net/?f=' + encodeURI(data[i].rawData);
+                    console.error(
+                        "KaTeX auto-render: Failed to parse `" + data[i].data +
+                        "` substituting with " + imgSrc,
+                        e
+                    );
+                    img.setAttribute('src', imgSrc);
+                    fragment.appendChild(img);
+                } else {
+                    console.error(
+                        "KaTeX auto-render: Failed to parse `" + data[i].data + "`",
+                        e
+                    );
+                    fragment.appendChild(document.createTextNode(" ?? "));
+                }
+                if (isAndroidDefined()) {
+                    Android.errorCallback(e.error, e.part, e.position, e.end);
+                }
                 continue;
             }
             fragment.appendChild(span);
@@ -88,6 +106,8 @@ const defaultAutoRenderOptions = {
     ignoredTags: [
         "script", "noscript", "style", "textarea", "pre", "code",
     ],
+
+    fallback: true,
 };
 
 const renderMathInElement = function(elem, options) {
