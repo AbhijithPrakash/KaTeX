@@ -2563,6 +2563,16 @@ describe("An aligned environment", function() {
     });
 });
 
+describe("An lgathered environment", function() {
+
+    it("should parse its input", function() {
+        expect("\\begin{lgathered}a&=b&c&=d\\\\e&=f\\end{lgathered}")
+            .toParse();
+    });
+
+});
+
+
 describe("An href command", function() {
     it("should parse its input", function() {
         expect("\\href{http://example.com/}{example here}").toParse();

@@ -4,6 +4,19 @@
 [![Join the chat at https://gitter.im/Khan/KaTeX](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Khan/KaTeX?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 ![](https://img.badgesize.io/Khan/KaTeX/v0.9.0/dist/katex.min.js?compression=gzip)
 
+## Brainly KaTeX
+
+Version of KaTeX modified to handle not so well formatted LaTeX used on Brainly portal.
+
+ * **lgathered** alignment environment was added to handle new lines in math mode
+ * **android task** was added to package.json, that creates a minified distribution package ready to put into android application assets folder.
+
+## Usage
+
+- Call `npm run android` to create a distribution package for Brainly Android application.
+
+## KaTeX
+
 KaTeX is a fast, easy-to-use JavaScript library for TeX math rendering on the web.
 
  * **Fast:** KaTeX renders its math synchronously and doesn't need to reflow the page. See how it compares to a competitor in [this speed test](http://www.intmath.com/cg5/katex-mathjax-comparison.php).

@@ -12,6 +12,9 @@ import {Token} from "./Token";
  */
 class ParseError {
     position: number | void;
+    endPosition: number | void;
+    errorMessage: string | void;
+    errorPart: string | void;
         // Error position based on passed-in Token or ParseNode.
 
     constructor(
@@ -20,6 +23,8 @@ class ParseError {
     ) {
         let error = "KaTeX parse error: " + message;
         let start;
+        let end;
+        let part;
 
         const loc = token && token.loc;
         if (loc && loc.start <= loc.end) {
@@ -30,7 +35,7 @@ class ParseError {
 
             // Prepend some information
             start = loc.start;
-            const end = loc.end;
+            end = loc.end;
             if (start === input.length) {
                 error += " at end of input: ";
             } else {
@@ -53,8 +58,8 @@ class ParseError {
             } else {
                 right = input.slice(end);
             }
-            error += left + underlined + right;
-
+            part = left + underlined + right;
+            error += part;
         }
 
         // Some hackery to make ParseError a prototype of Error
@@ -65,6 +70,12 @@ class ParseError {
         self.__proto__ = ParseError.prototype;
         // $FlowFixMe
         self.position = start;
+        // $FlowFixMe
+        self.endPosition = end;
+        // $FlowFixMe
+        self.errorMessage = message;
+        // $FlowFixMe
+        self.errorPart = part;
         return self;
     }
 }

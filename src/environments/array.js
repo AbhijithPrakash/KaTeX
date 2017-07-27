@@ -535,3 +535,29 @@ defineEnvironment({
     htmlBuilder,
     mathmlBuilder,
 });
+
+// A lgathered environment is like an array environment with one left aligned
+// column, but where rows are considered lines so get \jot line spacing
+// and contents are set in \displaystyle.
+defineEnvironment({
+    type: "array",
+    names: ["lgathered"],
+    props: {
+        numArgs: 0,
+    },
+    handler: function(context) {
+        let res = {
+            type: "array",
+            cols: [{
+                type: "align",
+                align: "l",
+            }],
+            addJot: true,
+        };
+        res = parseArray(context.parser, res, "display");
+        return res;
+    },
+    htmlBuilder,
+    mathmlBuilder,
+});
+
