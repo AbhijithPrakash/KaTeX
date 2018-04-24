@@ -37,11 +37,11 @@ const renderMathInText = function(text, optionsCopy) {
                     throw e;
                 }
                 optionsCopy.errorCallback(
-                    "KaTeX auto-render: Failed to parse `" + data[i].data +
-                    "` with ",
-                    e
+                    "KaTeX auto-render: Failed to parse `" + data[i].data + "`",
+                    e,
+                    data[i].rawData,
+                    fragment,
                 );
-                fragment.appendChild(document.createTextNode(data[i].rawData));
                 continue;
             }
             fragment.appendChild(span);
@@ -85,8 +85,10 @@ const defaultAutoRenderOptions = {
         "script", "noscript", "style", "textarea", "pre", "code",
     ],
 
-    errorCallback: function(msg, err) {
+    unicodeTextInMathMode: true,
+    errorCallback: function(msg, err, rawData, fragment) {
         console.error(msg, err);
+        fragment.appendChild(document.createTextNode(rawData));
     },
 };
 

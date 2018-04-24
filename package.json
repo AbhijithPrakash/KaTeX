@@ -76,7 +76,11 @@
     "dist": "npm test && npm run build && npm run dist:copy && npm run dist:zip && npm run dist:dist",
     "dist:copy": "cd build && mkdirp katex && cp -r katex.js katex.min.js katex.css katex.min.css contrib fonts ../README.md katex",
     "dist:zip": "cd build && tar czf katex.tar.gz katex/ && zip -rq katex.zip katex/",
-    "dist:dist": "rimraf dist/ && cp -r build/katex/ dist/"
+    "dist:dist": "rimraf dist/ && cp -r build/katex/ dist/",
+    "android": "npm test && npm run build && npm run android:copy && npm run android:zip && npm run android:dist",
+    "android:copy": "cd build && mkdirp katex && cp -r katex.min.js katex.min.css contrib/auto-render.min.js fonts katex",
+    "android:zip": "cd build && tar czf katex.tar.gz katex/ && zip -rq katex.zip katex/",
+    "android:dist": "rimraf assets/katex/ && cp -r build/katex/ assets/katex/"
   },
   "pre-commit": [
     "test:lint"

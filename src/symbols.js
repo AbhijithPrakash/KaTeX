@@ -440,11 +440,13 @@ defineSymbol(math, main, textord, "\u2018", "`");
 defineSymbol(math, main, textord, "$", "\\$");
 defineSymbol(text, main, textord, "$", "\\$");
 defineSymbol(text, main, textord, "$", "\\textdollar");
+defineSymbol(math, main, textord, "$", "\\textdollar");
 defineSymbol(math, main, textord, "%", "\\%");
 defineSymbol(text, main, textord, "%", "\\%");
 defineSymbol(math, main, textord, "_", "\\_");
 defineSymbol(text, main, textord, "_", "\\_");
 defineSymbol(text, main, textord, "_", "\\textunderscore");
+defineSymbol(math, main, textord, "_", "\\textunderscore");
 defineSymbol(math, main, textord, "\u2220", "\\angle", true);
 defineSymbol(math, main, textord, "\u221e", "\\infty", true);
 defineSymbol(math, main, textord, "\u2032", "\\prime");
@@ -608,6 +610,8 @@ defineSymbol(math, main, open, "[", "\\lbrack");
 defineSymbol(math, main, close, "]", "\\rbrack");
 defineSymbol(text, main, textord, "<", "\\textless"); // in T1 fontenc
 defineSymbol(text, main, textord, ">", "\\textgreater"); // in T1 fontenc
+defineSymbol(math, main, textord, "<", "\\textless"); // in T1 fontenc
+defineSymbol(math, main, textord, ">", "\\textgreater"); // in T1 fontenc
 defineSymbol(math, main, open, "\u230a", "\\lfloor", true);
 defineSymbol(math, main, close, "\u230b", "\\rfloor", true);
 defineSymbol(math, main, open, "\u2308", "\\lceil", true);
@@ -616,6 +620,7 @@ defineSymbol(math, main, textord, "\\", "\\backslash");
 defineSymbol(math, main, textord, "\u2223", "|");
 defineSymbol(math, main, textord, "\u2223", "\\vert");
 defineSymbol(text, main, textord, "|", "\\textbar"); // in T1 fontenc
+defineSymbol(math, main, textord, "|", "\\textbar"); // in T1 fontenc
 defineSymbol(math, main, textord, "\u2225", "\\|");
 defineSymbol(math, main, textord, "\u2225", "\\Vert");
 defineSymbol(text, main, textord, "\u2225", "\\textbardbl");
